@@ -1,6 +1,6 @@
 import Mark from '../components/Mark';
 import StrataField from '../components/StrataField';
-import { FLAGSHIP } from '../lib/curated';
+import { FEATURED } from '../lib/curated';
 import { formatPushed, getProjects } from '../lib/github';
 import styles from './strata.module.css';
 
@@ -97,15 +97,15 @@ export default async function Home() {
               <a className={styles.repoLink} href={p.url}>GitHub ↗</a>
             </div>
           </article>)}
-          <article className={`${styles.workCard} ${styles.flagship}`}>
-            <p className={styles.eyebrow}>{FLAGSHIP.layer}</p>
-            <h3>{FLAGSHIP.title}</h3>
-            <p>{FLAGSHIP.blurb}</p>
-            <div className={styles.stack}>{FLAGSHIP.stack.map((s) => <span key={s}>{s}</span>)}</div>
+          {FEATURED.map((f) => <article key={f.title} className={`${styles.workCard} ${styles.flagship}`}>
+            <p className={styles.eyebrow}>{f.layer}</p>
+            <h3>{f.title}</h3>
+            <p>{f.blurb}</p>
+            <div className={styles.stack}>{f.stack.map((s) => <span key={s}>{s}</span>)}</div>
             <div className={styles.flagshipLinks}>
-              {FLAGSHIP.links.map(([label, href]) => <a key={href} href={href}>{label} ↗</a>)}
+              {f.links.map(([label, href]) => <a key={href} href={href}>{label} ↗</a>)}
             </div>
-          </article>
+          </article>)}
         </div>
       </section>
 
